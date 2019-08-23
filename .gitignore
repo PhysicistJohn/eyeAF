@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+#Project specific stuff
+Dockerfile
+requirements.txt
+shape_predictor_68_face_landmarks.dat
+
 # Distribution / packaging
 .Python
 build/

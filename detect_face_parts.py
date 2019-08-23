@@ -13,6 +13,8 @@ isFaceDetecting      = True
 
 image_width          = 0
 image_path           = "lena.bmp"
+
+#I'm not certain about the license on this, so you'll have to download it yourself
 shape_predictor_path = "shape_predictor_68_face_landmarks.dat"
 
 # initialize dlib's face detector (HOG-based) and then create

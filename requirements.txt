@@ -1,2 +1,4 @@
+dlib
+imutils
 scipy
 opencv
