@@ -4,6 +4,7 @@ import scipy
 import imutils
 import dlib
 import cv2
+import os
 
 
 usingWebcam          = True
@@ -14,8 +15,30 @@ isFaceDetecting      = True
 image_width          = 0
 image_path           = "lena.bmp"
 
-#I'm not certain about the license on this, so you'll have to download it yourself
+#This dat file is NOT MINE and NOT LICENSED for any use other than playing around personally!!
+download_path        = 'http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2'
 shape_predictor_path = "shape_predictor_68_face_landmarks.dat"
+zip_path             = download_path.split('/')[-1]
+temp_path            = zip_path+'.download'
+if not os.path.exists(shape_predictor_path) : 
+    import shutil
+    import requests
+    import bz2
+    
+    if not os.path.exists(zip_path):
+        with open(temp_path,'wb') as face_dat_file :
+            face_dat_data = requests.get(download_path)
+            face_dat_file.write(face_dat_data.content)
+            shutil.move(temp_path,zip_path)
+    
+    with bz2.open(zip_path,'rb') as zip_file:
+        data = zip_file.read()
+
+    with open(shape_predictor_path,'wb') as dat_file:
+        dat_file.write(data)
+
+    #Cleanup zip file
+    os.remove(zip_path)
 
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor
@@ -129,43 +152,9 @@ while True:
 
     if not len(rects) or not isFaceDetecting : cv2.imshow(window_name, sub_image)
 
-    '''
-    absgrad = scipy.absolute(gray)
-    thresh = absgrad.mean() - absgrad.std()
-    gray[absgrad<thresh] = thresh
-    thresh = absgrad.mean() + absgrad.std()
-    gray[absgrad>thresh] = thresh
-    '''
 
 
 
     keyPress = cv2.waitKey(1)
 
 
-
-
-'''
-            #loop over the face parts individually
-            for (name, (i, j)) in face_utils.FACIAL_LANDMARKS_IDXS.items():
-            		# clone the original image so we can draw on it, then
-            		# display the name of the face part on the image
-            		clone = image.copy()
-            		cv2.putText(clone, name, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-            			0.7, (0, 0, 255), 2)
-
-            		# loop over the subset of facial landmarks, drawing the
-            		# specific face part
-            		for (x, y) in shape[i:j]:
-            			cv2.circle(clone, (x, y), 1, (0, 0, 255), -1)
-
-                # extract the ROI of the face region as a separate image
-            		(x, y, w, h) = cv2.boundingRect(scipy.array([shape[i:j]]))
-            		roi = image[y:y + h, x:x + w]
-            		roi = imutils.resize(roi, width=250, inter=cv2.INTER_CUBIC)
-
-            		# show the particular face part
-            		cv2.imshow("ROI", roi)
-            		cv2.imshow(window_name, clone)
-            		cv2.waitKey(0)
-
-'''
