@@ -20,145 +20,158 @@
         - opencv
         - scipy
 
-  opencv:
-    plugin: cmake
-    source: https://github.com/opencv/opencv.git
-    source-tag: 4.0.1
-    configflags:
-      - -DINSTALL_C_EXAMPLES=ON
-      - -DINSTALL_PYTHON_EXAMPLES=ON
-      - -DBUILD_EXAMPLES=ON
-      - -DCMAKE_INSTALL_PREFIX=/usr
-      - -DOPENCV_EXTRA_MODULES_PATH=contrib/modules
-    after: [ desktop-gtk3, xwayland-kiosk-helper ]
-    override-build: |
-      git clone https://github.com/opencv/opencv_contrib.git "$SNAPCRAFT_PART_BUILD"/contrib
-      snapcraftctl build
-    build-packages:
-      - libjpeg-dev
-      - libtiff5-dev
-      - libjasper-dev
-      - libpng12-dev
-      - libavcodec-dev
-      - libavformat-dev
-      - libswscale-dev
-      - libv4l-dev
-      - libxvidcore-dev
-      - libx264-dev
-      - libgtk2.0-dev
-      - libgtk-3-dev
-      - libatlas-base-dev
-      - gfortran
-      - python2.7-dev
-      - python3-dev
-    stage-packages:
-      - libatk1.0-0
-      - libatk-bridge2.0-0
-      - libatlas3-base
-      - libatspi2.0-0
-      - libavcodec-ffmpeg-extra56
-      - libavformat-ffmpeg56
-      - libavutil-ffmpeg54
-      - libbluray1
-      - libboost-filesystem1.58.0
-      - libboost-system1.58.0
-      - libcairo2
-      - libcairo-gobject2
-      - libcapnp-0.5.3
-      - libdatrie1
-      - libdc1394-22
-      - libepoxy0
-      - libexif12
-      - libfontconfig1
-      - libgdk-pixbuf2.0-0
-      - libgl1-mesa-dri
-      - libgme0
-      - libgomp1
-      - libgphoto2-6
-      - libgphoto2-port12
-      - libgraphite2-3
-      - libgsm1
-      - libharfbuzz0b
-      - libicu55
-      - libilmbase12
-      - libjasper1
-      - libjbig0
-      - libjpeg-turbo8
-      - libltdl7
-      - libmirclient9
-      - libmircommon7
-      - libmircore1
-      - libmirprotobuf3
-      - libmodplug1
-      - libmp3lame0
-      - libogg0
-      - libopencore-amrnb0
-      - libopencore-amrwb0
-      - libopenexr22
-      - libopenjpeg5
-      - libopus0
-      - liborc-0.4-0
-      - libpango-1.0-0
-      - libpangocairo-1.0-0
-      - libpangoft2-1.0-0
-      - libpixman-1-0
-      - libprotobuf-lite9v5
-      - libpython2.7
-      - libpython3.5
-      - libraw1394-11
-      - librtmp1
-      - libschroedinger-1.0-0
-      - libshine3
-      - libsnappy1v5
-      - libsoxr0
-      - libspeex1
-      - libssh-gcrypt-4
-      - libswresample-ffmpeg1
-      - libswscale-ffmpeg3
-      - libthai0
-      - libtheora0
-      - libtiff5
-      - libtwolame0
-      - libusb-1.0-0
-      - libv4l-0
-      - libv4lconvert0
-      - libva1
-      - libvo-aacenc0
-      - libvo-amrwbenc0
-      - libvorbis0a
-      - libvorbisenc2
-      - libvpx3
-      - libwavpack1
-      - libwayland-client0
-      - libwayland-cursor0
-      - libwayland-egl1-mesa
-      - libwebp5
-      - libx11-6
-      - libx264-148
-      - libx265-79
-      - libxau6
-      - libxcb1
-      - libxcb-render0
-      - libxcb-shm0
-      - libxcomposite1
-      - libxcursor1
-      - libxdamage1
-      - libxdmcp6
-      - libxext6
-      - libxfixes3
-      - libxi6
-      - libxinerama1
-      - libxkbcommon0
-      - libxml2
-      - libxrandr2
-      - libxrender1
-      - libxvidcore4
-      - libzvbi0
-      - python-numpy
-      - to amd64: [ "libcrystalhd3:amd64", "libnuma1:amd64" ]
-      - to i386: [ "libcrystalhd3:i386", "libnuma1:i386" ]
+    opencv:
+      plugin: cmake
+      source: https://github.com/opencv/opencv.git
+      source-tag: 4.0.1
+      configflags:
+        - -DINSTALL_C_EXAMPLES=ON
+        - -DINSTALL_PYTHON_EXAMPLES=ON
+        - -DBUILD_EXAMPLES=ON
+        - -DCMAKE_INSTALL_PREFIX=/usr
+        - -DOPENCV_EXTRA_MODULES_PATH=contrib/modules
+      after: [ desktop-gtk3, xwayland-kiosk-helper ]
+      override-build: |
+        git clone https://github.com/opencv/opencv_contrib.git "$SNAPCRAFT_PART_BUILD"/contrib
+        snapcraftctl build
+      build-packages:
+        - libjpeg-dev
+        - libtiff5-dev
+        - libjasper-dev
+        - libpng12-dev
+        - libavcodec-dev
+        - libavformat-dev
+        - libswscale-dev
+        - libv4l-dev
+        - libxvidcore-dev
+        - libx264-dev
+        - libgtk2.0-dev
+        - libgtk-3-dev
+        - libatlas-base-dev
+        - gfortran
+        - python2.7-dev
+        - python3-dev
+      stage-packages:
+        - libatk1.0-0
+        - libatk-bridge2.0-0
+        - libatlas3-base
+        - libatspi2.0-0
+        - libavcodec-ffmpeg-extra56
+        - libavformat-ffmpeg56
+        - libavutil-ffmpeg54
+        - libbluray1
+        - libboost-filesystem1.58.0
+        - libboost-system1.58.0
+        - libcairo2
+        - libcairo-gobject2
+        - libcapnp-0.5.3
+        - libdatrie1
+        - libdc1394-22
+        - libepoxy0
+        - libexif12
+        - libfontconfig1
+        - libgdk-pixbuf2.0-0
+        - libgl1-mesa-dri
+        - libgme0
+        - libgomp1
+        - libgphoto2-6
+        - libgphoto2-port12
+        - libgraphite2-3
+        - libgsm1
+        - libharfbuzz0b
+        - libicu55
+        - libilmbase12
+        - libjasper1
+        - libjbig0
+        - libjpeg-turbo8
+        - libltdl7
+        - libmirclient9
+        - libmircommon7
+        - libmircore1
+        - libmirprotobuf3
+        - libmodplug1
+        - libmp3lame0
+        - libogg0
+        - libopencore-amrnb0
+        - libopencore-amrwb0
+        - libopenexr22
+        - libopenjpeg5
+        - libopus0
+        - liborc-0.4-0
+        - libpango-1.0-0
+        - libpangocairo-1.0-0
+        - libpangoft2-1.0-0
+        - libpixman-1-0
+        - libprotobuf-lite9v5
+        - libpython2.7
+        - libpython3.5
+        - libraw1394-11
+        - librtmp1
+        - libschroedinger-1.0-0
+        - libshine3
+        - libsnappy1v5
+        - libsoxr0
+        - libspeex1
+        - libssh-gcrypt-4
+        - libswresample-ffmpeg1
+        - libswscale-ffmpeg3
+        - libthai0
+        - libtheora0
+        - libtiff5
+        - libtwolame0
+        - libusb-1.0-0
+        - libv4l-0
+        - libv4lconvert0
+        - libva1
+        - libvo-aacenc0
+        - libvo-amrwbenc0
+        - libvorbis0a
+        - libvorbisenc2
+        - libvpx3
+        - libwavpack1
+        - libwayland-client0
+        - libwayland-cursor0
+        - libwayland-egl1-mesa
+        - libwebp5
+        - libx11-6
+        - libx264-148
+        - libx265-79
+        - libxau6
+        - libxcb1
+        - libxcb-render0
+        - libxcb-shm0
+        - libxcomposite1
+        - libxcursor1
+        - libxdamage1
+        - libxdmcp6
+        - libxext6
+        - libxfixes3
+        - libxi6
+        - libxinerama1
+        - libxkbcommon0
+        - libxml2
+        - libxrandr2
+        - libxrender1
+        - libxvidcore4
+        - libzvbi0
+        - python-numpy
+        - to amd64: [ "libcrystalhd3:amd64", "libnuma1:amd64" ]
+        - to i386: [ "libcrystalhd3:i386", "libnuma1:i386" ]
 
 
   apps:
     eyeaf:
-      command: bin/eyeAF
+      command: python detect_face_parts.py
+      environment:
+        XWAYLAND_FULLSCREEN_WINDOW_HINT: title="opencv-demo"
+      slots: [ x11 ]
+      plugs:
+        - camera
+        - home
+        - opengl
+        - wayland
+        - x11-plug
+
+plugs:
+  x11-plug:
+    interface: x11
