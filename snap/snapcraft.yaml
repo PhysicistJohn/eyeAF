@@ -12,4 +12,4 @@
   app:
     eyeaf:
       # See 'snapcraft plugins'
-      command: /usr/bin/python3 detect_face_parts.py
+      command: ['python','detect_face_parts.py']
