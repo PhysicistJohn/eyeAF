@@ -9,8 +9,7 @@
   grade: devel # must be 'stable' to release into candidate/stable channels
   confinement: devmode # use 'strict' once you have the right plugs and slots
 
-  parts:
+  app:
     eyeaf:
       # See 'snapcraft plugins'
-      source: detect_face_parts.py
-      plugin: python3
+      command: /usr/bin/python3 detect_face_parts.py
