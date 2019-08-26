@@ -10,6 +10,7 @@
   confinement: devmode # use 'strict' once you have the right plugs and slots
 
   parts:
-    my-part:
+    eyeaf:
       # See 'snapcraft plugins'
-      plugin: nil
+      source: detect_face_parts.py
+      plugin: python3
