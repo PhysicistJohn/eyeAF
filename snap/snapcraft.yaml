@@ -22,9 +22,9 @@
         - scipy
 
     opencv-contrib-snap:
-    source: https://github.com/opencv/opencv_contrib.git
-    source-type: git
-    plugin: dump
+      source: https://github.com/opencv/opencv_contrib.git
+      source-type: git
+      plugin: dump
 
 
     opencv-snap:
