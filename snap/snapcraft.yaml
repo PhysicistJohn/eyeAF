@@ -62,6 +62,4 @@
         - wayland
         - x11-plug
 
-plugs:
-  x11-plug:
-    interface: x11
+
