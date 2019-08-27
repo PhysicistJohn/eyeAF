@@ -16,10 +16,10 @@
       source: .
       after: [opencv-snap]
       stage-packages:
-        - dlib
-        - imutils
+        - python-dlib
+        - python-imutils
         - python-opencv
-        - scipy
+        - python-scipy
 
     opencv-contrib-snap:
       source: https://github.com/opencv/opencv_contrib.git
