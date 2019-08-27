@@ -10,16 +10,31 @@
   confinement: devmode # use 'strict' once you have the right plugs and slots
 
   parts:
+
+  dlib:
+    plugin: python
+    stage-packages:
+      - build-essential
+      - cmake
+      - libopenblas-dev
+      - liblapack-dev
+      - libx11-dev
+      - libgtk-3-dev
+      - python-dev
+      - python3-dev
+    python-packages:
+      - numpy
+      - dlib
+
     eyeaf:
       plugin: python
       python-version: python3
       source: .
       after: [opencv-snap]
-      stage-packages:
-        - python-dlib
-        - python-imutils
-        - python-opencv
-        - python-scipy
+      python-packages:
+        - imutils
+        - opencv
+        - scipy
 
     opencv-contrib-snap:
       source: https://github.com/opencv/opencv_contrib.git
